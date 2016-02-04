@@ -38,7 +38,7 @@ public class Visitor extends json.JSONBaseVisitor{
 
   public Entry visitPair(json.JSONParser.PairContext ctx) {
     Entry entry = new Entry();
-    entry.key = ctx.STRING().getText();
+    entry.key = ctx.STRING().getText().replaceAll("\"","");
     entry.value = visitValue(ctx.value());
     return entry;
   }
@@ -53,10 +53,10 @@ public class Visitor extends json.JSONBaseVisitor{
 
   public Object visitValue(json.JSONParser.ValueContext ctx) {
     if (ctx.STRING() != null){
-      return ctx.STRING();
+      return ctx.STRING().getText().replaceAll("\"","");
     }
     else if(ctx.NUMBER()!=null){
-      return  ctx.NUMBER();
+      return  ctx.NUMBER().getText().replaceAll("\"","");
     }
     else if(ctx.array() != null) {
       return visitArray(ctx.array());
