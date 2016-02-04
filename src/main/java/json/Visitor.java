@@ -58,6 +58,9 @@ public class Visitor extends json.JSONBaseVisitor{
     else if(ctx.NUMBER()!=null){
       return  ctx.NUMBER().getText().replaceAll("\"","");
     }
+    else if(ctx.getChildCount() == 0){
+      return ctx.getText().replaceAll("\"","");
+    }
     else if(ctx.array() != null) {
       return visitArray(ctx.array());
     }

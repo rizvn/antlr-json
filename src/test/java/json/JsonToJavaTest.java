@@ -21,7 +21,7 @@ public class JsonToJavaTest {
 
   @Test
   public void testToMap() throws Exception {
-    Map<String, Object> map = JsonToJava.toMap("{\"a\":\"1\", \"c\": \"2\"}");
+    Map<String, Object> map = JsonToJava.toMap("{\"a\":\"1\", \"c\": \"true\"}");
     Assert.assertTrue(map.containsKey("a"));
   }
 }
